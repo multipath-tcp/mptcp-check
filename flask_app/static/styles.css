@@ -54,20 +54,6 @@ ul a:last-child {
     border-bottom: none;
 }
 
-.folder::before {
-    content: "\1F4C1"; /* Folder icon */
-    position: relative;
-    font-size: 16px;
-    width: 1rem;
-}
-
-.file::before {
-    content: "\1F4C4"; /* File icon */
-    position: relative;
-    font-size: 16px;
-    width: 1rem;
-}
-
 #logo {
     position: fixed;
     top: 1rem;

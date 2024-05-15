@@ -26,6 +26,7 @@ def mptcp_status_page():
     addr = request.remote_addr
     port = request.environ.get('REMOTE_PORT')
     user = request.environ.get('HTTP_USER_AGENT')
+    host = request.host_url
 
     #ipv6 compatibility
     if ":" in addr:
@@ -46,13 +47,7 @@ def mptcp_status_page():
     if user.startswith("curl"):
         return "You " + state_message + " using MPTCP.\n"
 
-    return render_template('index.html', state_message=state_message, state_class=state_class)
-
-#this is just to be sure that certbot is able to update
-#normally the request is handled by lighttpd
-@app.route('/.well-known/<path:filename>')
-def serve_cert(filename):
-    return send_from_directory('/var/www/.well-known/', filename)
+    return render_template('index.html', state_message=state_message, state_class=state_class, host=host)
 
 if __name__ == "__main__":
     app.run(host="::", port=80, debug=True)

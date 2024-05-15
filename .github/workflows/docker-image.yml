@@ -28,5 +28,5 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: mux514/mptcp-check:${{ github.ref_name }}
+          tags: mptcp/mptcp-check:${{ github.ref_name }}
         
