@@ -1,0 +1,151 @@
+:root {
+    --background1: #f4f4f4;
+    --background2: #fff;
+}
+a {color: #7253ed;}
+a:hover {
+    text-decoration-color: rgba(114,83,237,0.45);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+      --background1: #27262b;
+      --background2: #31343f;
+      color: #e6e1e8;
+    }
+
+    a {color: #2c84fa;}
+    a:hover {
+        text-decoration-color: rgba(44,132,250,0.45);
+    }
+}
+
+
+body {
+    font-family: system-ui,-apple-system,"Segoe UI",roboto,"Helvetica Neue",arial,sans-serif,"Segoe UI Emoji";
+    margin: 0;
+    padding: 0;
+    background-color: var(--background1);
+
+    line-height: 1.6;
+    font-size: inherit;
+    overflow-wrap: break-word;
+}
+
+ul {
+    width: 98%;
+    background-color: var(--background2);
+    border-radius: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 5px;
+}
+
+ul a {
+    display: block;
+    width: 98%;
+    border-bottom: 1px solid #ddd;
+    height: 2rem;
+    line-height: 2rem;
+    margin-bottom: 2px;
+    padding-left: 0.5rem;
+}
+
+ul a:last-child {
+    border-bottom: none;
+}
+
+#logo {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    background-color: var(--background2);
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 5rem;
+    height: 5rem;
+}
+
+#logo img {
+    width: 5rem;
+}
+
+main {
+    max-width: 50%;
+    margin: 0 auto;
+    padding-bottom: 20rem;
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: var(--background2);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2, h3 {
+    text-align: center;
+}
+
+p {
+    text-align: justify;
+}
+
+code {
+    color: #544492;
+    padding: 0.2em 0.15em;
+    font-weight: 400;
+    background-color: #f5f6fa;
+    border: 1px solid #eeebee;
+    border-radius: 4px;
+}
+
+#connection-status {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 18px;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+#connection-status p {
+    text-align: center;
+}
+
+.error {
+    background-color: #f0ad4e;
+}
+
+.success {
+    background-color: #5cb85c;
+    color: white;
+}
+
+.fail {
+    background-color: #d9534f;
+    color: white;
+}
+
+p {
+    margin: 0;
+}
+
+@media only screen and (max-width: 600px) {
+    main {
+        max-width: 90%;
+    }
+
+    #logo {
+        top: auto;
+        bottom: 1rem;
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    #logo img {
+        width: 2.5rem;
+    }
+
+}
