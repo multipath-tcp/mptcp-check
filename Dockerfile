@@ -1,16 +1,15 @@
-FROM ubuntu:latest
+FROM ubuntu:24.04
 
 # Update package lists and install necessary dependencies
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get dist-upgrade -y && apt-get install -y \
     python3 \
     python3-pip \
-    python3.12-venv \
-    python3-apt \
+    python3-venv \
+    # python3-apt \
     openssl \
     lighttpd \
     iproute2 \
     mptcpize \
-    autoconf automake libtool m4 pkg-config \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN python3 -m venv /app/venv
