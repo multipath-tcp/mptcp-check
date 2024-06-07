@@ -21,5 +21,6 @@ RUN chmod +x /flask_app/app.*
 
 EXPOSE 80 443
 
-# mptcpize will not be needed with lighttpd > 1.4.76 and the option "server.network-mptcp"
+# mptcpize will not be needed with lighttpd >= 1.4.76 and the network-mptcp
+# feature flag: server.feature-flags = ( "server.network-mptcp" => "enable" )
 CMD ["mptcpize", "run", "/usr/sbin/lighttpd", "-D", "-f", "/lighttpd.conf"]
