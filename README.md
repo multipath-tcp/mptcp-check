@@ -54,7 +54,7 @@ docker run --name mptcp-check \
 email= #the email used by certbot
 url= #your domain name
 path=/var/docker/mptcp-check
-cert="certbot/conf/live/${url}/fullchain.pem"
+cert="${path}/cert/live/${url}/fullchain.pem"
 
 cert_before=$(sha256sum "${cert}")
 
