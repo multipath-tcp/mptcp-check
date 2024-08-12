@@ -61,7 +61,7 @@ cert_before=$(sha256sum "${cert}")
 docker run --name certbot-renew \
     -v "${path}/www:/var/www/:rw" \
     -v "${path}/cert/:/etc/letsencrypt/:rw" \
-    --detach \
+    --rm \
     certbot/certbot \
     certonly --non-interactive --agree-tos --webroot \
             --webroot-path /var/www/ \
