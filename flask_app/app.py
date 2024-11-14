@@ -33,6 +33,7 @@ def mptcp_status_page():
         addr = f"{addr}:{port}"
 
     state_info = ''
+    state_error = ''
     try:
         conn = check_output(["ss", "-MnH", "dst", f"{addr}", "dport", f"{port}"]).decode("ascii")
         if conn.startswith("ESTAB"):
@@ -46,7 +47,7 @@ def mptcp_status_page():
     except Exception as e:
         state_message = 'are maybe, or maybe not (internal error)'
         state_class = 'error'
-        state_info = 'Error: ' + str(e)
+        state_error = 'Error: ' + str(e)
 
     if user.startswith("curl"):
         return "You " + state_message + " using MPTCP.\n"
@@ -55,6 +56,7 @@ def mptcp_status_page():
                            state_message=state_message,
                            state_class=state_class,
                            state_info=state_info,
+                           state_error=state_error,
                            host=host)
 
 if __name__ == "__main__":

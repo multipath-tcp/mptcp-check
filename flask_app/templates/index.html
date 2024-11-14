@@ -21,7 +21,7 @@
             </div>
         </div>
         <p>
-            {{ state_info }}
+            {{ state_info|safe }}{{ state_error }}
         </p>
 
         <h2>cURL</h2>
