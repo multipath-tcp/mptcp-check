@@ -32,22 +32,30 @@ def mptcp_status_page():
     if ":" in addr:
         addr = f"{addr}:{port}"
 
+    state_info = ''
     try:
         conn = check_output(["ss", "-MnH", "dst", f"{addr}", "dport", f"{port}"]).decode("ascii")
         if conn.startswith("ESTAB"):
             state_message = 'are'
             state_class = 'success'
+            state_info = 'Nice, even your browser is supporting MPTCP!'
         else:
             state_message = 'are not'
             state_class = 'fail'
+            state_info = 'Your browser <strong>is not</strong> supporting MPTCP, but <strong>maybe your system is</strong>, check the cURL command below.'
     except Exception as e:
-        state_message = '[error: ' + str(e) + ']'
+        state_message = 'are maybe, or maybe not (internal error)'
         state_class = 'error'
+        state_info = 'Error: ' + str(e)
 
     if user.startswith("curl"):
         return "You " + state_message + " using MPTCP.\n"
 
-    return render_template('index.html', state_message=state_message, state_class=state_class, host=host)
+    return render_template('index.html',
+                           state_message=state_message,
+                           state_class=state_class,
+                           state_info=state_info,
+                           host=host)
 
 if __name__ == "__main__":
     app.run(host="::", port=80, debug=True)
