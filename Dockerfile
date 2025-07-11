@@ -1,4 +1,4 @@
-FROM ubuntu:24.04
+FROM ubuntu:25.04
 
 # Update package lists and install necessary dependencies
 RUN apt-get update && apt-get dist-upgrade -y && apt-get install -y \
@@ -8,7 +8,6 @@ RUN apt-get update && apt-get dist-upgrade -y && apt-get install -y \
     openssl \
     lighttpd \
     iproute2 \
-    mptcpize \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN python3 -m venv /app/venv
@@ -21,6 +20,4 @@ RUN chmod +x /flask_app/app.*
 
 EXPOSE 80 443
 
-# mptcpize will not be needed with lighttpd >= 1.4.76 and the network-mptcp
-# feature flag: server.feature-flags = ( "server.network-mptcp" => "enable" )
-CMD ["mptcpize", "run", "/usr/sbin/lighttpd", "-D", "-f", "/lighttpd.conf"]
+CMD ["/usr/sbin/lighttpd", "-D", "-f", "/lighttpd.conf"]
