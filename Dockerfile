@@ -1,4 +1,4 @@
-FROM ubuntu:25.04
+FROM ubuntu:26.04
 
 # Update package lists and install necessary dependencies
 RUN apt-get update && apt-get dist-upgrade -y && apt-get install -y \
